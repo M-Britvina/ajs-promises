@@ -11,11 +11,11 @@ afterEach(() => {
 
 test('read fail', async () => {
     read.mockRejectedValue(new Error("Reading error"));
-    await expect(GameSavingLoader.load()).rejects.toThrow("Reading error");
+    await expect(new GameSavingLoader().load()).rejects.toThrow("Reading error");
 });
 
 test('parse fail', async () => {
     read.mockResolvedValue("invalid data");
     json.mockRejectedValue(new Error("Parsing error"));
-    await expect(GameSavingLoader.load()).rejects.toThrow("Parsing error");
+    await expect(new GameSavingLoader().load()).rejects.toThrow("Parsing error");
 });
